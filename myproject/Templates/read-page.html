@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RT-Read page</title>
+    
+    <link rel="stylesheet" href="{% static 'css/read-page.css' %}">
+    <link rel="stylesheet" href="{% static 'js/style.js' %}" class="">
+</head>
+
+<body>
+    <div id="main">
+        <div id="sidebar">
+            <ul id="sidebar-menu">
+                <br><br><br>
+                <li><a href="{% url 'home' %}">
+                        <i class="ti-home"></i>
+                        <label>Home</label>
+                    </a></li>
+                <li><a href="">
+                        <i class="ti-book"></i>
+                        <label>Reading</label>
+                    </a></li>
+                <li><a href="">
+                        <i class="ti-notepad"></i>
+                        <label>Notebook</label>
+                    </a></li>
+                <li><a href="">
+                        <i class="ti-settings"></i>
+                        <label>Settings</label>
+                    </a></li>
+                <li><a href="{% url 'login' %}">
+                        <i class="ti-user"></i>
+                        <label>Log in</label>
+                    </a></li>
+            </ul>
+        </div>
+        <div id="content-layout">
+            <div id="content">
+                <div id="content-story">
+                    <div>
+                        <h2>{{ object_views.name }}</h2>
+                    </div>
+
+                    <p>{{ object_views.content_reading }}</p>
+                </div>
+                <div id="content-tab">
+                    <div id="content-tab-nav">
+                        <ul>
+                            <button class="tablinks" onclick="openContentTap(event, 'Quest')">Quest</button>
+                            <button class="tablinks" onclick="openContentTap(event, 'Vocabulary')">Vocabulary</button>
+                            <button class="tablinks" onclick="openContentTap(event, 'Note')">Note</button>
+                        </ul>
+                    </div>
+                    <div id="content-tab-body">
+                        <ul id="body-idiom" class="tabcontent">
+                            <div>
+                                <p class="idiom-idiom" style="font-size: 2em; font-weight: bold;">Break a leg!</p>
+                                <p class="idiom-meaning">Good luck! (an expression that is used in theater
+                                    performances)</p>
+                            </div>
+                        </ul>
+                        <ul id="Quest" class="tabcontent">
+                            <li>
+                                <h1>Welcome to DataFlair Quiz</h1>
+
+                                            <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+
+                                            <form method='post' action=''>
+                                                {% csrf_token %}
+                                                {% for q  in questions%}
+                                                <div class="form-group">
+                                                <label for="question">{{q.question}}</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1" checked>
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            {{q.op1}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option2">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            {{q.op2}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option3">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            {{q.op3}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option4">
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            {{q.op4}}
+                                                        </label>
+                                                    </div>
+                                                    <br>
+                                                </div>    
+                                                {% endfor %}
+                                                <input id='timer' type='hidden' name="timer" value="">
+                                                <br>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                                {% block script %}
+                                                    <script>
+
+                                                        console.log('hello world')
+                                                        const timer=document.getElementById('displaytimer')
+                                                        console.log(timer.textContent)
+                                                        const inputtag = document.getElementById('timer')
+
+                                                        t=0
+                                                        setInterval(()=>{
+                                                            t+=1
+                                                            timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                                                            inputtag.value = t
+                                                        },1000)
+                                                    </script>
+                                                {% endblock script %}
+                            </li>
+                        </ul>
+                        <ul id="Vocabulary" class="tabcontent">
+                            <li>
+                                <p class="vocabulary-word">Break a leg!</p>
+                                <p class="vocabulary-meaning">Good luck! (an expression that is used in theater
+                                    performances)</p>
+                            </li>
+                        </ul>
+                        <ul id="Note" class="tabcontent">
+                            <li>
+                                <p class="vocabulary-word">Break a leg!</p>
+                                <p class="vocabulary-meaning">Good luck! (an expression that is used in theater
+                                    performances)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function openContentTap(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+
+</html>

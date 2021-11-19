@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>RT-Log In</title>
+</head>
+<body>
+
+            <div id="main">
+                <div id="content">
+                    <div id="idiom">
+                        <h2 id="the-idiom">Break a leg!</h2>
+                        <p id="idiom-meaning">- Good luck! (an expression that is used in theater performances)</p>
+                        <p id="idion-example">"Break a leg!" the director called to the lead actor.</p>
+                    </div>
+                    <div id="login">
+                        <label>Login</label>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <label for="uname">Username</label>
+                            <input type="text" id="uname" name="uname" placeholder="Type your username">
+                            <label for="upass">Password</label>
+                            <input type="text" id="upass" name="upass" placeholder="Type your password">
+                            <input type="submit" id="bt-forgot-pass" value="Forgot password?"><br><br>
+                            <input type="submit" id="bt-login" value="LOGIN">
+                            <input type="submit" id="bt-call-sign-up" value="Don't have an account? Sign up here">
+                        </form>
+                    </div>
+                </div>
+
+    
+</body>
+</html>
+

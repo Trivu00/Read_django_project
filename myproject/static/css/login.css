@@ -1,0 +1,160 @@
+:root {
+    /* Biến toàn cục, đặt tên biến để sau dấu -- */
+    --text-color: #ffffff;
+    --text-font: Arial, Helvetica, sans-serif;
+    --main-bg: #004270;
+    --idiom-bg: #001c30;
+    --login-bg: #0061a7;
+    --login-hover-shadow: #cbcbcb;
+    --border: 10px;
+}
+
+/* reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--text-font);
+    color: var(--text-color);
+}
+
+#main {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--main-bg);
+}
+
+#content {
+    width: 800px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#idiom {
+    width: 480px;
+    height: 450px;
+    padding: 40px;
+    background-color: var(--idiom-bg);
+    position: absolute;
+    border-start-start-radius: var(--border);
+    border-end-start-radius: var(--border);
+}
+
+#idiom #the-idiom {
+    padding: 30px 50px 20px;
+    font-size: 40px;
+}
+
+#idiom #idiom-meaning {
+    font-weight: bold;
+    padding: 30px 20px 20px;
+    font-size: 23px;
+}
+
+#idiom #idion-example {
+    font-weight: bold;
+    padding: 20px;
+    font-size: 23px;
+}
+
+#login,
+#signup {
+    font-weight: bold;
+    width: 320px;
+    height: 450px;
+    background-color: var(--login-bg);
+    position: absolute;
+    left: 480px;
+    border-start-end-radius: var(--border);
+    border-end-end-radius: var(--border);
+}
+
+#login>label,
+#signup>label {
+    display: flex;
+    margin: 30px 80px 30px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#login form label,
+#signup form label {
+    display: flex;
+    margin: 10px 50px;
+}
+
+#login input[type=text],
+#signup input[type=text] {
+    font-weight: bold;
+    margin: auto;
+    width: 70%;
+    padding: 12px 20px;
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+#login #bt-forgot-pass {
+    color: var(--text-color);
+    font-weight: bold;
+    float: right;
+    padding: 12px 12px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#login #bt-forgot-pass:hover {
+    text-shadow: 0px 0px 10px var(--login-hover-shadow);
+}
+
+#login #bt-login,
+#signup #bt-sign-up {
+    font-weight: bolder;
+    font-size: large;
+    display: flex;
+    margin: 30px 15px 5px 80px;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#login #bt-login:hover,
+#signup #bt-sign-up:hover {
+    box-shadow: 0px 0px 10px 0px var(--login-hover-shadow);
+}
+
+#login #bt-call-sign-up,
+#signup #bt-call-login {
+    color: var(--text-color);
+    font-weight: bold;
+    display: flex;
+    margin: 20px auto;
+    padding: 12px 12px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#signup #bt-call-login {
+    margin: 0px auto;
+}
+
+#login #bt-call-sign-up:hover,
+#signup #bt-call-login:hover {
+    text-shadow: 0px 0px 10px var(--login-hover-shadow);
+}
