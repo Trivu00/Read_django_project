@@ -77,14 +77,16 @@ def read_page_view(request, id):
 #Tạo render cho READING    
 def reading_view(request):
     object_view = ReadingBook.objects.all()
-    object_view1 = ReadingBook.objects.filter(category__name = 'Daily life Story')
-    object_view2 = ReadingBook.objects.filter(category__name = 'Statire Story')
+    object_view1 = ReadingBook.objects.filter(category__name = 'Funny Story')
+    object_view2 = ReadingBook.objects.filter(category__name = 'Jokes')
+    object_view3 = ReadingBook.objects.filter(category__name = 'Children Story')
     return render (
         request,
         'reading.html',{
         'object_view': object_view,
         'object_view1' : object_view1,
         'object_view2' :object_view2,
+        'object_view3' :object_view3,
         }
     ) 
 

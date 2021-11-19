@@ -47,17 +47,20 @@
                 <div id="content-main " \>
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="#home" class="nav-link active" data-bs-toggle="tab">ALL READING</a>
+                            <a href="#all" class="nav-link active" data-bs-toggle="tab">ALL READING</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#profile" class="nav-link" data-bs-toggle="tab">DAILY LIFE STORY </a>
+                            <a href="#funny" class="nav-link" data-bs-toggle="tab">FUNNY STORY </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#messages" class="nav-link" data-bs-toggle="tab">STATIRE STORY </a>
+                            <a href="#jokes" class="nav-link" data-bs-toggle="tab">JOKES </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#children" class="nav-link" data-bs-toggle="tab">CHILDREN STORY </a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="home">
+                        <div class="tab-pane fade show active" id="all">
                             {% for item in object_view %}
                                 <div class="lesson " style="">
                                     <a href="{% url 'read-page' item.id%}" class="">
@@ -72,7 +75,7 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div class="tab-pane fade" id="profile">
+                        <div class="tab-pane fade" id="funny">
                             {% for item in object_view1 %}
                                 <div class="lesson " style="">
                                             <h2>{{ item.name }}</h2>
@@ -83,11 +86,22 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div class="tab-pane fade" id="messages">
+                        <div class="tab-pane fade" id="jokes">
                             {% for item in object_view2 %}
                                 <div class="lesson " style="">
-                                            <h2>{{ item.name }}</h2>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Simple collapsible</button>
+                                    <h2>{{ item.name }}</h2>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Simple collapsible</button>
+                                            <div id="demo" class="collapse">
+                                                {{ item.content_reading }}
+                                            </div>     
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade" id="children">
+                            {% for item in object_view3 %}
+                                <div class="lesson " style="">
+                                    <h2>{{ item.name }}</h2>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Simple collapsible</button>
                                             <div id="demo" class="collapse">
                                                 {{ item.content_reading }}
                                             </div>     
